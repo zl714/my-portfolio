@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zachary Lecroy - Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0d1b0e;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Nav */
+        header {
+            background: rgba(13, 27, 14, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(80, 200, 120, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #7FFF00;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e8f5e9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #7FFF00;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0d1b0e 0%, #1a3a1f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300'%3E%3Cpath fill='%23000000' fill-opacity='0.4' d='M0,150 Q50,50 100,120 T200,140 T300,100 T400,130 T500,110 T600,140 T700,100 T800,130 T900,110 T1000,140 T1100,120 T1200,150 L1200,300 L0,300 Z'%3E%3C/path%3E%3Cpath fill='%23000000' fill-opacity='0.3' d='M0,180 Q60,80 120,160 T240,170 T360,130 T480,160 T600,140 T720,170 T840,130 T960,160 T1080,150 T1200,180 L1200,300 L0,300 Z'%3E%3C/path%3E%3Cpath fill='%23000000' fill-opacity='0.2' d='M0,200 Q70,120 140,180 T280,190 T420,160 T560,190 T700,170 T840,200 T980,170 T1120,190 T1200,200 L1200,300 L0,300 Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(127, 255, 0, 0.3), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(127, 255, 0, 0.3), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(127, 255, 0, 0.2), transparent),
+                radial-gradient(1px 1px at 80% 10%, rgba(127, 255, 0, 0.3), transparent),
+                radial-gradient(2px 2px at 90% 60%, rgba(127, 255, 0, 0.2), transparent),
+                radial-gradient(1px 1px at 33% 80%, rgba(127, 255, 0, 0.3), transparent);
+            background-size: 200% 200%;
+            animation: sparkle 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #f1f5f9;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #7FFF00;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #b8e6b8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #7FFF00;
+            color: #0d1b0e;
+        }
+
+        .btn-primary:hover {
+            background: #9FFF40;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(127, 255, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #7FFF00;
+            border: 2px solid #7FFF00;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(127, 255, 0, 0.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #f1f5f9;
+        }
+
+        /* About Section */
+        .about {
+            background: #162d1a;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: #b8e6b8;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(127, 255, 0, 0.15);
+            color: #7FFF00;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(127, 255, 0, 0.3);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #0d1b0e;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #162d1a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(127, 255, 0, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(127, 255, 0, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a3a1f 0%, #2d5a32 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #7FFF00;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: #90c890;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: rgba(127, 255, 0, 0.15);
+            color: #7FFF00;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: #7FFF00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #162d1a;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: #b8e6b8;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #7FFF00;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #9FFF40;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d1b0e;
+            padding: 2rem 0;
+            text-align: center;
+            color: #7FFF00;
+            border-top: 1px solid rgba(127, 255, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">ZL</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Zachary Lecroy</h1>
+            <p class="subtitle">Data Analyst | UX/UI Designer | Frontend Developer</p>
+            <p>I build exceptional digital experiences that make people's lives easier. Passionate about clean code, elegant solutions, and turning data into actionable insights.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate developer and designer with a love for creating elegant solutions to complex problems. With experience in data analytics, UX/UI design, and frontend development, I focus on building intuitive, data-driven applications that users love.</p>
+                    <p>I'm currently seeking opportunities in data analytics, UX/UI design, or frontend development where I can leverage my skills to create meaningful impact.</p>
+                    <div class="skills">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, rgba(26, 58, 31, 0.5) 0%, rgba(127, 255, 0, 0.1) 100%); border-radius: 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 30px; border: 2px solid rgba(127, 255, 0, 0.3);">
+                        <div style="background: rgba(13, 27, 14, 0.8); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border: 1px solid rgba(127, 255, 0, 0.2);">
+                            <div style="font-size: 2.5rem; margin-bottom: 8px;">⚛️</div>
+                            <div style="color: #b8e6b8; font-size: 0.9rem; font-weight: 600;">React</div>
+                        </div>
+                        <div style="background: rgba(13, 27, 14, 0.8); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border: 1px solid rgba(127, 255, 0, 0.2);">
+                            <div style="font-size: 2.5rem; margin-bottom: 8px;">🐍</div>
+                            <div style="color: #b8e6b8; font-size: 0.9rem; font-weight: 600;">Python</div>
+                        </div>
+                        <div style="background: rgba(13, 27, 14, 0.8); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border: 1px solid rgba(127, 255, 0, 0.2);">
+                            <div style="font-size: 2.5rem; margin-bottom: 8px;">📊</div>
+                            <div style="color: #b8e6b8; font-size: 0.9rem; font-weight: 600;">SQL</div>
+                        </div>
+                        <div style="background: rgba(13, 27, 14, 0.8); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border: 1px solid rgba(127, 255, 0, 0.2);">
+                            <div style="font-size: 2.5rem; margin-bottom: 8px;">🎨</div>
+                            <div style="color: #b8e6b8; font-size: 0.9rem; font-weight: 600;">Figma</div>
+                        </div>
+                        <div style="background: rgba(13, 27, 14, 0.8); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border: 1px solid rgba(127, 255, 0, 0.2);">
+                            <div style="font-size: 2.5rem; margin-bottom: 8px;">📱</div>
+                            <div style="color: #b8e6b8; font-size: 0.9rem; font-weight: 600;">Swift</div>
+                        </div>
+                        <div style="background: rgba(13, 27, 14, 0.8); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border: 1px solid rgba(127, 255, 0, 0.2);">
+                            <div style="font-size: 2.5rem; margin-bottom: 8px;">💾</div>
+                            <div style="color: #b8e6b8; font-size: 0.9rem; font-weight: 600;">Git</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🌾</div>
+                    <div class="project-content">
+                        <h3>FarmSense</h3>
+                        <p>A comprehensive farming application for field management. Helps farmers track their fields, monitor crop health, and optimize agricultural operations with an intuitive mobile interface.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Swift</span>
+                            <span class="project-tag">iOS</span>
+                            <span class="project-tag">Mobile Development</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/zl714/Farmsense" target="_blank">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📈</div>
+                    <div class="project-content">
+                        <h3>TradeLens</h3>
+                        <p>An intelligent paper trading application featuring an AI-powered grading system. Allows users to practice trading strategies and receive AI-driven feedback on their performance and decision-making.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Swift</span>
+                            <span class="project-tag">AI Integration</span>
+                            <span class="project-tag">iOS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/zl714/TradeLens" target="_blank">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">💼</div>
+                    <div class="project-content">
+                        <h3>More Projects Coming Soon</h3>
+                        <p>Currently working on additional projects in data analytics and frontend development. Check back soon or visit my GitHub to see what I'm building next!</p>
+                        <div class="project-tags">
+                            <span class="project-tag">In Progress</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/zl714" target="_blank">View GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Work Together</h2>
+            <div class="contact-content">
+                <p>I'm actively seeking opportunities in data analytics, UX/UI design, and frontend development. Whether you have a job opportunity, project collaboration, or just want to connect, I'd love to hear from you!</p>
+                <a href="mailto:lecroyzack@gmail.com" class="btn btn-primary">Send Me an Email</a>
+                <div class="social-links">
+                    <a href="https://github.com/zl714" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/zachary-l-6b2020230/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Zachary Lecroy. Built with passion and lots of coffee ☕</p>
+        </div>
+    </footer>
+</body>
+</html>
