@@ -1,23 +1,24 @@
-# Zachary LeCroy — Portfolio
+# Zack LeCroy: Portfolio
 
-Personal portfolio site: **[zacharylecroy.vercel.app](https://zacharylecroy.vercel.app)**
+Personal site: **[zacharylecroy.vercel.app](https://zacharylecroy.vercel.app)**
 
-A single-page, zero-dependency portfolio — About, Projects, and Skills sections with live links to each project (ATL Crime Map, TradeLens, Diamond Mind, and more).
+The forest green "name patch" design: who I am, what I run, what I've built, and one page resumes to download.
 
-## Stack
+## What's here
 
-- **One `index.html`** — vanilla HTML/CSS/JS, no framework, no build step, styles and scripts inlined.
-- **LeCroy Design System** — navy near-black surface ramp, slate text ramp, a single interactive accent, and green/red reserved for data only. Typeset in **Geist** (UI) and **Geist Mono** (numbers/labels).
-- **Deployed on Vercel** — static, zero config.
+- `index.html`: the whole site. Plain HTML and CSS, no framework, no build step.
+- `resume/`: the four resume PDFs linked from the Resume section (web copies, no phone number).
+- `assets/`: project screenshots.
+- `og.png`, `favicon*.png`: link preview image and icons.
+
+Fonts are Bricolage Grotesque (headings) and Inter (body) from Google Fonts.
 
 ## Run locally
 
 ```bash
-open index.html
-# or
 python3 -m http.server 8000
 ```
 
 ## Deploy
 
-Push to GitHub and import into Vercel (framework preset: **Other**, no build command). Done.
+Vercel, static, zero config (framework preset: Other, no build command).
